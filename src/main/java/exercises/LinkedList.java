@@ -47,4 +47,18 @@ public class LinkedList {
             return -1; // not correct!
         }
     }
+
+    //size method
+    public int size() {
+        int count = 0;
+        if (first == null) {
+            return count;
+        }
+
+        while (first != null) {
+            count++;
+            first = first.next;
+        }
+        return count;
+    }
 }
