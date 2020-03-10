@@ -51,13 +51,10 @@ public class LinkedList {
     //size method
     public int size() {
         int count = 0;
-        if (first == null) {
-            return count;
-        }
-
-        while (first != null) {
+        Node current = first;
+        while (current != null) {
             count++;
-            first = first.next;
+            current = current.next;
         }
         return count;
     }
