@@ -9,8 +9,10 @@ public class Main {
         list.add(3);
         list.add(4);
         list.add(6);
+        list.remove(0);
         System.out.println("Size of list:" + list.size());
         int elem = list.get(0);
-        System.out.println("first elem: " + elem);
+        System.out.println("Element is: " + elem);
+        list.printList();
     }
 }

@@ -4,8 +4,14 @@ package exercises;
 class Node {
     int elem;
     Node next;
+
     // so we can do new Node(5, null) etc.
     Node(int elem, Node next) {
+        this.elem = elem;
+        this.next = next;
+    }
+
+    Node(int elem){
         this.elem = elem;
         this.next = next;
     }
@@ -39,12 +45,16 @@ public class LinkedList {
 
     // get method
     public int get(int index) {
-        // 1. case: index == 0
-        if (index == 0) {
-            return first.elem;
-        } else { // 2. case: index > 0
-            // not yet implemented
-            return -1; // not correct!
+        Node tmp = first;
+        int counter = 0;
+        while (counter < index && tmp.next != null) {
+            tmp = tmp.next;
+            counter++;
+        }
+        if (counter == index) {
+            return tmp.elem;
+        } else {
+            throw new IndexOutOfBoundsException();
         }
     }
 
@@ -57,5 +67,36 @@ public class LinkedList {
             current = current.next;
         }
         return count;
+    }
+
+    //remove method
+    public void remove(int index) {
+        int count = 0;
+        Node current = first;
+
+        if (current == null)
+            return;
+
+        if (index == 0)
+        {
+            first = current.next;   // Change head
+            return;
+        }
+
+        for (int i=0; current!=null && i<index-1; i++)
+            current = current.next;
+        Node next = current.next.next;
+        current.next = next;
+    }
+
+    //show method
+    public void printList()
+    {
+        Node tnode = first;
+        while (tnode != null)
+        {
+            System.out.print(tnode.elem+" ");
+            tnode = tnode.next;
+        }
     }
 }
